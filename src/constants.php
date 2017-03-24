@@ -1,0 +1,10 @@
+<?php
+
+// Directions
+CONST DIRECTION_UP = 1;
+CONST DIRECTION_DOWN = 2;
+CONST DIRECTION_LEFT = 3;
+CONST DIRECTION_RIGHT = 4;
+
+// Client opcodes
+CONST OPCODE_MOVE = 'move';
