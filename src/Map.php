@@ -71,7 +71,12 @@ class Map
             if ($excludePlayer && $player === $excludePlayer) {
                 continue;
             }
-            $player->connection->write($payload);
+
+            //$player->connection->write($payload);
+
+            $renderer = new Helpers\ASCIIRenderer();
+            $data = $renderer->render($this);
+            $player->connection->write($data);
         }
     }
 }

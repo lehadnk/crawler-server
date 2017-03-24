@@ -9,6 +9,8 @@
 class Player extends Creature
 {
 
+    public $speed = 2;
+
     /**
      * @var \React\Socket\Connection
      */
