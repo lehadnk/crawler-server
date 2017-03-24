@@ -36,6 +36,10 @@ class SocketFactory
             });
         });
 
+        $loop->addPeriodicTimer(1, function() use ($world, $pool) {
+            GarbageCollector::checkTimeout($world, $pool);
+        });
+
         return $socket;
     }
 }

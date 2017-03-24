@@ -11,10 +11,17 @@ class Player extends Creature
 
     public $speed = 2;
 
+    public $lastActivity;
+
     /**
      * @var \React\Socket\Connection
      */
     public $connection;
+
+    public function __construct()
+    {
+        $this->lastActivity = time();
+    }
 
     public function destroy() {
         parent::destroy();

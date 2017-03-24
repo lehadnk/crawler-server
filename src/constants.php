@@ -8,3 +8,6 @@ CONST DIRECTION_RIGHT = 4;
 
 // Client opcodes
 CONST OPCODE_MOVE = 'move';
+
+// Disconnect timeout
+CONST PLAYER_CONNECTION_TIMEOUT = 120;
