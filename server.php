@@ -29,7 +29,7 @@ echo "Server running at http://127.0.0.1:1488\n";
  * Http player server
  */
 $socket = new React\Socket\Server($loop);
-$socket =
+$http = new React\Http\Server($socket, $loop);
 
 /**
  * Spectator server
