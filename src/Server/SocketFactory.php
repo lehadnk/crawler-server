@@ -25,7 +25,7 @@ class SocketFactory
             $player->connection = $connection;
             $world->addPlayer($player);
 
-            $connection->write('200 OK');
+            $connection->write('6 200 OK');
 
             $connection->on('data', function($data) use ($connection, $dispatcher, $player) {
                 $dispatcher->dispatch($connection, $player, $data);

@@ -95,7 +95,7 @@ class Map
 
             $renderer = new Helpers\ASCIIRenderer();
             $data = $renderer->render($this);
-            $player->connection->write($data);
+            $player->connection->write(strlen($data).' '.$data);
         }
     }
 }
