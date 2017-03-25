@@ -2,8 +2,8 @@
 
 return [
     'maps' => [
-        'test.php',
-        'another.php'
+        'another.php',
+        'test.php'
     ],
     'connectionTimeout' => 120
 ];

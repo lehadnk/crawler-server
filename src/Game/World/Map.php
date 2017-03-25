@@ -3,6 +3,7 @@ namespace Game\World;
 
 use Game\Entity\Creature;
 use Exception;
+use Game\World\MapLoaders\PHPMapLoader;
 use Helpers;
 use Game\Entity\Player;
 
@@ -20,7 +21,7 @@ class Map
     public $world;
 
     /**
-     * @var array
+     * @var Tile[][]
      */
     public $tiles = [];
 
@@ -42,13 +43,19 @@ class Map
             throw new Exception("No such map exists: $filename");
         }
 
-        $this->tiles = include $filename;
+        if (preg_match('/.*.php/', $filename)) {
+            $loader = new PHPMapLoader($this);
+            $loader->load($filename);
+        } else {
+            throw new Exception("Unknown map format for map $filename");
+        }
 
         echo "Loaded map $filename" . PHP_EOL;
         echo "Map figureprint:" . PHP_EOL;
         foreach ($this->tiles as $row) {
             foreach ($row as $cell) {
-                echo $cell;
+                // \033[0;31m - red, \033[0;32m - green
+                echo $cell->isPassable ? "\033[0;32m$cell\033[0m" : "\033[0;31m$cell\033[0m";
             }
             echo PHP_EOL;
         }
@@ -74,7 +81,7 @@ class Map
 
     public function isPassable($x, $y)
     {
-        return $this->isCellExists($x, $y);
+        return $this->isCellExists($x, $y) && $this->tiles[$x][$y]->isPassable;
     }
 
     public function notifyPlayers($payload, $excludePlayer = null)
