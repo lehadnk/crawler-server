@@ -15,7 +15,7 @@ use SebastianBergmann\CodeCoverage\Report\PHP;
 class RequestDispatcher
 {
     /**
-     * @var \World
+     * @var \Game\World\World
      */
     private $world;
     /**
@@ -23,13 +23,13 @@ class RequestDispatcher
      */
     private $pool;
 
-    public function __construct(\World $world, ThreadPool $pool)
+    public function __construct(\Game\World\World $world, ThreadPool $pool)
     {
         $this->world = $world;
         $this->pool = $pool;
     }
 
-    public function dispatch(Connection $connection, \Player $player, $data) {
+    public function dispatch(Connection $connection, \Game\Entity\Player $player, $data) {
         echo '====================================='.PHP_EOL;
         echo $this->pool->getHash($connection).PHP_EOL;
         echo $data.PHP_EOL;

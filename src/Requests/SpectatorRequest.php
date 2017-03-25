@@ -15,11 +15,11 @@ use Helpers\ASCIIRenderer;
 class SpectatorRequest
 {
     /**
-     * @var \World
+     * @var \Game\World\World
      */
     private $world;
 
-    public function __construct(\World $world)
+    public function __construct(\Game\World\World $world)
     {
         $this->world = $world;
     }
@@ -37,7 +37,7 @@ class SpectatorRequest
 
         $renderer = new ASCIIRenderer();
         foreach ($this->world->maps as $id => $map) {
-            $response->write("Map #$id".PHP_EOL);
+            $response->write("World\Map #$id".PHP_EOL);
             $response->write("Active players: ".count($map->players).PHP_EOL);
             $response->write($renderer->render($map).PHP_EOL);
         }

@@ -14,7 +14,7 @@ trait Movable
     private $timeLastMove;
 
     /**
-     * @return \Map
+     * @return \Game\World\Map
      */
     abstract function getMap();
     abstract function getX();

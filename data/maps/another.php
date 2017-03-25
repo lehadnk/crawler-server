@@ -1,5 +1,7 @@
 <?php
 
+use Game\Entity\Creature;
+
 $creature = new Creature();
 $creature->sign = '@';
 $creature->speed = '0.2';

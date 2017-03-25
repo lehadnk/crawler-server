@@ -16,7 +16,7 @@ class Loaf extends Base
 
     public $radius = 3;
 
-    public function __construct(\Creature $actor, $options = [])
+    public function __construct(\Game\Entity\Creature $actor, $options = [])
     {
         parent::__construct($actor);
         $this->spawnX = $actor->x;

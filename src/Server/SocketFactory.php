@@ -13,7 +13,7 @@ use React\Socket\Server;
  */
 class SocketFactory
 {
-    public static function createSocket(\World $world, LoopInterface $loop) {
+    public static function createSocket(\Game\World\World $world, LoopInterface $loop) {
         $pool = new ThreadPool();
         $dispatcher = new RequestDispatcher($world, $pool);
 
@@ -21,7 +21,7 @@ class SocketFactory
         $socket->on('connection', function(Connection $connection) use ($dispatcher, $pool, $world) {
             $pool->attach($connection);
 
-            $player = new \Player();
+            $player = new \Game\Entity\Player();
             $player->connection = $connection;
             $world->addPlayer($player);
 

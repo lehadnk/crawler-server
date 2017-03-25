@@ -10,7 +10,7 @@ namespace Helpers;
  */
 class ASCIIRenderer
 {
-    public function render(\Map $map) {
+    public function render(\Game\World\Map $map) {
         $picture = $map->tiles;
         foreach ($map->creatures as $creature) {
             $picture[$creature->x][$creature->y] = $creature->sign;

@@ -1,5 +1,9 @@
 <?php
 
+namespace Game\World;
+
+use Game\Entity\Player;
+
 /**
  * Created by PhpStorm.
  * User: lehadnk
@@ -14,7 +18,7 @@ class World
     public $maps = [];
 
     /**
-     * @var Players[]
+     * @var Player[]
      */
     public $players = [];
 
@@ -23,7 +27,8 @@ class World
      */
     public $entryLevel;
 
-    public function addMap(Map $map) {
+    public function addMap(Map $map)
+    {
         if (empty($this->maps)) {
             $this->entryLevel = $map;
         }
@@ -32,7 +37,8 @@ class World
         $map->world = $this;
     }
 
-    public function loop(\React\EventLoop\Timer\Timer $timer) {
+    public function loop(\React\EventLoop\Timer\Timer $timer)
+    {
         foreach ($this->maps as $map) {
             foreach ($map->creatures as $creature) {
                 if ($creature->behaviour !== null) {
@@ -42,17 +48,20 @@ class World
         }
     }
 
-    public function addPlayer(Player $player) {
+    public function addPlayer(Player $player)
+    {
         $this->entryLevel->addPlayer($player);
         $this->players[] = $player;
     }
 
-    public function removePlayer(Player $player) {
+    public function removePlayer(Player $player)
+    {
         $player->destroy();
         unset($player);
     }
 
-    public function notifyPlayers($payload, $excludePlayer = null) {
+    public function notifyPlayers($payload, $excludePlayer = null)
+    {
         foreach ($this->players as $player) {
             if ($excludePlayer && $player === $excludePlayer) {
                 continue;

@@ -1,4 +1,5 @@
 <?php
+namespace Game\Entity;
 
 /**
  * Created by PhpStorm.
@@ -23,7 +24,8 @@ class Player extends Creature
         $this->lastActivity = time();
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         parent::destroy();
 
         foreach ($this->map->players as $key => $player) {

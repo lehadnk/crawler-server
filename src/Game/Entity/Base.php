@@ -1,4 +1,7 @@
 <?php
+namespace Game\Entity;
+
+use Game\World\Map;
 
 /**
  * Created by PhpStorm.
@@ -6,7 +9,7 @@
  * Date: 24/03/2017
  * Time: 8:30 AM
  */
-class Entity
+class Base
 {
     public $x = 0;
     public $y = 0;
@@ -23,33 +26,40 @@ class Entity
         $this->id = uniqid();
     }
 
-    public function spawn(Map $map, $x, $y) {
+    public function spawn(Map $map, $x, $y)
+    {
         $map->addCreature($this);
         $this->x = $x;
         $this->y = $y;
     }
 
-    public function getMap() {
+    public function getMap()
+    {
         return $this->map;
     }
 
-    public function getX() {
+    public function getX()
+    {
         return $this->x;
     }
 
-    public function getY() {
+    public function getY()
+    {
         return $this->y;
     }
 
-    public function setX($x) {
+    public function setX($x)
+    {
         $this->x = $x;
     }
 
-    public function setY($y) {
+    public function setY($y)
+    {
         $this->y = $y;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 }

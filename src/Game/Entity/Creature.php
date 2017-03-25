@@ -1,4 +1,5 @@
 <?php
+namespace Game\Entity;
 
 /**
  * Created by PhpStorm.
@@ -6,7 +7,7 @@
  * Date: 24/03/2017
  * Time: 7:24 AM
  */
-class Creature extends Entity
+class Creature extends Base
 {
     use \Traits\Movable;
 
@@ -18,11 +19,13 @@ class Creature extends Entity
      */
     public $behaviour;
 
-    public function getMovementCooldown() {
+    public function getMovementCooldown()
+    {
         return 1 / $this->speed;
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         foreach ($this->map->creatures as $key => $creature) {
             if ($creature == $this) {
                 unset($this->map->creatures[$key]);

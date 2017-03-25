@@ -1,4 +1,6 @@
 <?php
+use Game\World\Map;
+use Game\World\World;
 
 /**
  * Created by PhpStorm.

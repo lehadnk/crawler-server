@@ -11,7 +11,7 @@ namespace Server;
 
 class GarbageCollector
 {
-    public static function checkTimeout(\World $world, ThreadPool $pool) {
+    public static function checkTimeout(\Game\World\World $world, ThreadPool $pool) {
         foreach ($world->players as $player) {
             if ($player->lastActivity + PLAYER_CONNECTION_TIMEOUT < time()) {
                 $pool->detach($player->connection);

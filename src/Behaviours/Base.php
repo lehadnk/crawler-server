@@ -12,11 +12,11 @@ namespace Behaviours;
 abstract class Base
 {
     /**
-     * @var \Creature
+     * @var \Game\Entity\Creature
      */
     protected $actor;
 
-    public function __construct(\Creature $actor, $options = [])
+    public function __construct(\Game\Entity\Creature $actor, $options = [])
     {
         $this->actor = $actor;
         foreach ($options as $field => $value) {

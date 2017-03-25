@@ -13,7 +13,7 @@ use Server\ThreadPool;
 abstract class Base
 {
     /**
-     * @var \World
+     * @var \Game\World\World
      */
     protected $world;
     /**
@@ -21,11 +21,11 @@ abstract class Base
      */
     protected $pool;
     /**
-     * @var \Player
+     * @var \Game\Entity\Player
      */
     protected $player;
 
-    public function __construct(\World $world, ThreadPool $pool, \Player $player)
+    public function __construct(\Game\World\World $world, ThreadPool $pool, \Game\Entity\Player $player)
     {
         $this->world = $world;
         $this->pool = $pool;
