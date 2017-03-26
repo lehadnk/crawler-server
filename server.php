@@ -7,7 +7,6 @@
  */
 
 require 'vendor/autoload.php';
-require 'src/constants.php';
 
 $loop = React\EventLoop\Factory::create();
 

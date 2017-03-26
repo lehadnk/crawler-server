@@ -21,10 +21,13 @@ trait Movable
     abstract function getY();
     abstract function setX($x);
     abstract function setY($y);
+    abstract function getDirection();
+    abstract function setDirection($direction);
     abstract function getMovementCooldown();
     abstract function getId();
 
     public function step($direction) {
+        $this->turn($direction);
         if ($this->couldStep($direction)) {
             $newX = $this->getX();
             $newY = $this->getY();
@@ -51,6 +54,10 @@ trait Movable
         return false;
     }
 
+    public function turn($direction) {
+        $this->setDirection($direction);
+    }
+
     public function move($newX, $newY) {
         if ($this->couldMove($newX, $newY)) {
             $this->position($newX, $newY);
@@ -62,14 +69,15 @@ trait Movable
 
     public function teleport($newX, $newY) {
         if ($this->couldTeleport($newX, $newY)) {
-            $this->setX($newX);
-            $this->setY($newY);
+            $this->position($newX, $newY);
             return true;
         }
         return false;
     }
 
     private function position($newX, $newY) {
+        $this->getMap()->getTile($this->getX(), $this->getY())->actors->detach($this);
+        $this->getMap()->getTile($newX, $newY)->actors->attach($this);
         $this->setX($newX);
         $this->setY($newY);
         $this->timeLastMove = microtime(true);

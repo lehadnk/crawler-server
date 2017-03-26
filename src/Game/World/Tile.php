@@ -14,6 +14,16 @@ class Tile
     public $sign = ' ';
     public $isPassable = true;
 
+    /**
+     * @var \SplObjectStorage
+     */
+    public $actors;
+
+    public function __construct()
+    {
+        $this->actors = new \SplObjectStorage();
+    }
+
     public function __toString()
     {
         return $this->sign;

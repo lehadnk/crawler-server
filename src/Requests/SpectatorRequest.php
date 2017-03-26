@@ -37,9 +37,16 @@ class SpectatorRequest
 
         $renderer = new ASCIIRenderer();
         foreach ($this->world->maps as $id => $map) {
-            $response->write("World\Map #$id".PHP_EOL);
+            $response->write("Map #$id".PHP_EOL);
             $response->write("Active players: ".count($map->players).PHP_EOL);
             $response->write($renderer->render($map).PHP_EOL);
+
+            $response->write('Creatures:'.PHP_EOL);
+            foreach ($map->creatures as $creature) {
+                $info = $creature->getId().' HP:'.$creature->getHp();
+                $response->write($info.PHP_EOL);
+            }
+            $response->write(PHP_EOL.PHP_EOL);
         }
 
         $response->end();

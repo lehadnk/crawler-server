@@ -10,10 +10,6 @@ use Helpers\Coordinates;
  */
 class CoordinatesTest extends PHPUnit_Framework_TestCase
 {
-    public function setUp() {
-        require_once '../src/constants.php';
-    }
-
     public function testCoordinates() {
         $this->assertEquals(['3', '5'], Coordinates::direction('2', '5', DIRECTION_RIGHT));
         $this->assertEquals(['3', '10'], Coordinates::direction('3', '5', DIRECTION_DOWN, 5));

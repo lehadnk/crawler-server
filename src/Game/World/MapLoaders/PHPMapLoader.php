@@ -22,7 +22,7 @@ class PHPMapLoader
     }
 
     public function load($filename) {
-        list($tiles, $structure) = include $filename;
+        list($tiles, $structure, $postCreate) = include $filename;
 
         $map = [];
         foreach ($tiles as $x => $row) {
@@ -36,5 +36,9 @@ class PHPMapLoader
         }
 
         $this->map->tiles = $map;
+
+        if (is_callable($postCreate)) {
+            $postCreate();
+        }
     }
 }

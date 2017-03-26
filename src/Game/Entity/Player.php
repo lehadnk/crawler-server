@@ -21,6 +21,7 @@ class Player extends Creature
 
     public function __construct()
     {
+        parent::__construct();
         $this->lastActivity = time();
     }
 
