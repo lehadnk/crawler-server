@@ -11,7 +11,8 @@ namespace Behaviours;
 class Wander extends Base
 {
     public function loop() {
-        $direction = rand(1, 4);
+        $direction = rand(0, 3);
+        $direction = [DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_LEFT, DIRECTION_RIGHT][$direction];
         $this->actor->step($direction);
     }
 }
