@@ -27,7 +27,7 @@ class PHPMapLoader
         $map = [];
         foreach ($tiles as $x => $row) {
             foreach ($row as $y => $cell) {
-                $tile = new Tile();
+                $tile = new Tile($x, $y);
                 $tile->sign = $cell;
                 $tile->isPassable = $structure[$x][$y] == ' ' ? true : false;
 

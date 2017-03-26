@@ -14,12 +14,15 @@ class Tile
     public $sign = ' ';
     public $isPassable = true;
 
+    public $x;
+    public $y;
+
     /**
      * @var \SplObjectStorage
      */
     public $actors;
 
-    public function __construct()
+    public function __construct($x, $y)
     {
         $this->actors = new \SplObjectStorage();
     }
