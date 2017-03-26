@@ -25,11 +25,11 @@ class PHPMapLoader
         list($tiles, $structure, $postCreate) = include $filename;
 
         $map = [];
-        foreach ($tiles as $x => $row) {
-            foreach ($row as $y => $cell) {
+        foreach ($tiles as $y => $row) {
+            foreach ($row as $x => $cell) {
                 $tile = new Tile($x, $y);
                 $tile->sign = $cell;
-                $tile->isPassable = $structure[$x][$y] == ' ' ? true : false;
+                $tile->isPassable = $structure[$y][$x] == ' ' ? true : false;
 
                 $map[$x][$y] = $tile;
             }

@@ -21,8 +21,8 @@ $postCreate = function() {
     $creature->behaviour = new \Behaviours\Loaf($creature);
 };
 
-$tiles = array_fill(1, 20, array_fill(1, 40, '.'));
-$structure = array_fill(1, 20, array_fill(1, 40, ' '));
+$tiles = array_fill(1, 40, array_fill(1, 20, '.'));
+$structure = array_fill(1, 40, array_fill(1, 20, ' '));
 
 $this->map->spawnPoint = [5, 5];
 

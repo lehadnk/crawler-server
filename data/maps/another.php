@@ -30,10 +30,10 @@ $postCreate = function()
     $creature->behaviour = new \Behaviours\Loaf($creature);
 };
 
-$map = array_fill(1, 20, array_fill(1, 40, ' '));
+$map = array_fill(1, 40, array_fill(1, 20, ' '));
 foreach ($map as $x => $row) {
     foreach ($row as $y => $cell) {
-        if ($x == 1 || $x == 20 || $y == 1 || $y == 40) {
+        if ($x == 1 || $x == 40 || $y == 1 || $y == 20) {
             $map[$x][$y] = '#';
         }
     }

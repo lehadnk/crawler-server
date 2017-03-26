@@ -25,6 +25,8 @@ class Tile
     public function __construct($x, $y)
     {
         $this->actors = new \SplObjectStorage();
+        $this->x = $x;
+        $this->y = $y;
     }
 
     public function __toString()
