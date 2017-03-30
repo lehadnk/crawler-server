@@ -41,7 +41,7 @@ class RequestDispatcher
         if (ctype_alnum($opcode)) {
             $class = 'Server\\Controllers\\'.ucfirst($opcode);
             if (class_exists($class)) {
-                echo "Calling $class...";
+                echo "Calling $class...".PHP_EOL;
 
                 $controller = new $class($this->world, $this->pool, $player);
                 $controller->execute($payload);

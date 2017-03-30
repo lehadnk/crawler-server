@@ -4,37 +4,36 @@ use Game\Entity\Creature;
 
 $postCreate = function()
 {
-
     $creature = new Creature();
     $creature->sign = '@';
     $creature->speed = '0.2';
-    $creature->spawn($this->map, 4, 37);
+    $creature->spawn($this->map, 36, 1);
     $creature->behaviour = new \Behaviours\Loaf($creature);
 
     $creature = new Creature();
     $creature->sign = '@';
     $creature->speed = '0.2';
-    $creature->spawn($this->map, 17, 37);
+    $creature->spawn($this->map, 36, 17);
     $creature->behaviour = new \Behaviours\Loaf($creature);
 
     $creature = new Creature();
     $creature->sign = '@';
     $creature->speed = '0.2';
-    $creature->spawn($this->map, 4, 4);
+    $creature->spawn($this->map, 1, 1);
     $creature->behaviour = new \Behaviours\Loaf($creature);
 
     $creature = new Creature();
     $creature->sign = '@';
     $creature->speed = '0.2';
-    $creature->spawn($this->map, 17, 4);
+    $creature->spawn($this->map, 1, 17);
     $creature->behaviour = new \Behaviours\Loaf($creature);
 };
 
-$map = array_fill(1, 40, array_fill(1, 20, ' '));
-foreach ($map as $x => $row) {
-    foreach ($row as $y => $cell) {
-        if ($x == 1 || $x == 40 || $y == 1 || $y == 20) {
-            $map[$x][$y] = '#';
+$map = array_fill(0, 19, array_fill(0, 39, ' '));
+foreach ($map as $y => $row) {
+    foreach ($row as $x => $cell) {
+        if ($y == 0 || $y == 18 || $x == 0 || $x == 37) {
+            $map[$y][$x] = '#';
         }
     }
 }

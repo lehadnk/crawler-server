@@ -19,7 +19,7 @@ class Distance
      * @param $toY
      * @return integer
      */
-    public static function to($fromX, $fromY, $toX, $toY) : integer {
+    public static function to($fromX, $fromY, $toX, $toY) : int {
         $modX = ($fromX > $toX) ? $fromX - $toX : $toX - $fromX;
         $modY = ($fromY > $toY) ? $fromY - $toY : $toY - $fromY;
 

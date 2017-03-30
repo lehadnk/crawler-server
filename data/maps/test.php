@@ -11,7 +11,7 @@ $postCreate = function() {
     $creature = new Creature();
     $creature->sign = 'P';
     $creature->speed = '1';
-    $creature->spawn($this->map, 16, 37);
+    $creature->spawn($this->map, 37, 17);
     $creature->behaviour = new \Behaviours\Stand($creature);
 
     $creature = new Creature();
@@ -21,8 +21,8 @@ $postCreate = function() {
     $creature->behaviour = new \Behaviours\Loaf($creature);
 };
 
-$tiles = array_fill(1, 40, array_fill(1, 20, '.'));
-$structure = array_fill(1, 40, array_fill(1, 20, ' '));
+$tiles = array_fill(0, 19, array_fill(0, 39, '.'));
+$structure = array_fill(0, 19, array_fill(0, 39, ' '));
 
 $this->map->spawnPoint = [5, 5];
 

@@ -6,7 +6,7 @@
  * Time: 8:50 PM
  */
 
-$tiles = array_fill(1, 20, array_fill(1, 40, '.'));
-$structure = array_fill(1, 20, array_fill(1, 40, ' '));
+$tiles = array_fill(0, 19, array_fill(0, 39, '.'));
+$structure = array_fill(0, 19, array_fill(0, 39, ' '));
 
 return [$tiles, $structure, null];

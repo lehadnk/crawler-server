@@ -18,13 +18,17 @@ class ASCIIRenderer
      */
     public function render(\Game\World\Map $map) : string {
         $picture = $map->tiles;
+
         foreach ($map->creatures as $creature) {
-            $picture[$creature->y][$creature->x] = $creature->sign;
+            $picture[$creature->x][$creature->y] = $creature->sign;
         }
 
         $string = "";
-        foreach ($picture as $row) {
-            $string .= implode('', $row).PHP_EOL;
+        for ($y = 0; $y < $map->size['y']; $y++) {
+            for ($x = 0; $x < $map->size['x']; $x++) {
+                $string .= $picture[$x][$y];
+            }
+            $string .= PHP_EOL;
         }
 
         return $string;

@@ -4,6 +4,7 @@ namespace Game\World;
 use Game\Entity\Creature;
 use Exception;
 use Game\World\MapLoaders\PHPMapLoader;
+use Game\World\MapLoaders\TXTMapLoader;
 use Helpers;
 use Game\Entity\Player;
 
@@ -19,6 +20,11 @@ class Map
      * @var World
      */
     public $world;
+
+    /**
+     * @var int[]
+     */
+    public $size = ['x' => 0, 'y' => 0];
 
     /**
      * @var Tile[][]
@@ -46,20 +52,32 @@ class Map
         if (preg_match('/.*.php/', $filename)) {
             $loader = new PHPMapLoader($this);
             $loader->load($filename);
+        } elseif (preg_match('/.*.txt/', $filename)) {
+            $loader = new TXTMapLoader($this);
+            $loader->load($filename);
         } else {
             throw new Exception("Unknown map format for map $filename");
         }
 
+        if (count($this->tiles) == 0) {
+            throw new Exception("Unable to load a map: $filename: it is empty");
+        }
+
+        $this->size = [
+            'x' => count($this->tiles) - 1,
+            'y' => count($this->tiles[0])
+        ];
+
         if ($verbose) {
             echo "Loaded map $filename" . PHP_EOL;
             echo "Map figureprint:" . PHP_EOL;
-            foreach ($this->tiles as $row) {
-                foreach ($row as $cell) {
-                    // \033[0;31m - red, \033[0;32m - green
-                    echo $cell->isPassable ? "\033[0;32m$cell\033[0m" : "\033[0;31m$cell\033[0m";
+
+            Helpers\Coordinates::invertedLoop($this, function(Tile $tile, $isLastOnLine) {
+                echo $tile->isPassable ? "\033[0;32m$tile\033[0m" : "\033[0;31m$tile\033[0m";
+                if ($isLastOnLine) {
+                    echo PHP_EOL;
                 }
-                echo PHP_EOL;
-            }
+            });
         }
     }
 
