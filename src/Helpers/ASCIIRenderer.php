@@ -3,14 +3,20 @@
 namespace Helpers;
 
 /**
- * Created by PhpStorm.
+ * Renders the ASCII version of the game field. Not intended to be used on
+ * production - just for testing purposes only.
+ *
  * User: lehadnk
  * Date: 24/03/2017
- * Time: 7:32 AM
  */
 class ASCIIRenderer
 {
-    public function render(\Game\World\Map $map) {
+    /**
+     * Returns a string image of the map with all creatures on it.
+     * @param \Game\World\Map $map
+     * @return string
+     */
+    public function render(\Game\World\Map $map) : string {
         $picture = $map->tiles;
         foreach ($map->creatures as $creature) {
             $picture[$creature->y][$creature->x] = $creature->sign;

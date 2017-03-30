@@ -7,10 +7,12 @@ use React\Http\Response as HttpResponse;
 use Helpers\ASCIIRenderer;
 
 /**
- * Created by PhpStorm.
+ * This request is allowing the user to connect using an HTTP client to
+ * get some general information about the game world: ASCII picture of the
+ * game world, creatures status, and some other useful debug information.
+ *
  * User: lehadnk
  * Date: 24/03/2017
- * Time: 6:36 AM
  */
 class SpectatorRequest
 {
@@ -19,11 +21,21 @@ class SpectatorRequest
      */
     private $world;
 
+    /**
+     * SpectatorRequest constructor.
+     * @param \Game\World\World $world The world we're going to observe
+     */
     public function __construct(\Game\World\World $world)
     {
         $this->world = $world;
     }
 
+    /**
+     * The http request handler.
+     *
+     * @param HttpRequest $request
+     * @param HttpResponse $response
+     */
     public function handle(HttpRequest $request, HttpResponse $response) {
         $response->writeHead(200, array('Content-Type' => 'text/plain'));
 

@@ -8,8 +8,20 @@
 
 namespace Interfaces;
 
-
+/**
+ * Interface Vulnerable
+ *
+ * An object implementing this interface could take damage from the different sources (combat, environment, e.t.c).
+ *
+ * @package Interfaces
+ */
 interface Vulnerable
 {
+    /**
+     * Makes the actor to take $damage amount of damage.
+     *
+     * @param $amount
+     * @return mixed
+     */
     public function recieveDamage($amount);
 }

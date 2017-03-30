@@ -4,16 +4,21 @@ namespace Traits;
 use Helpers\Distance;
 
 /**
- * Created by PhpStorm.
+ * This trait allows the actor to move across the map.
+ *
  * User: lehadnk
  * Date: 24/03/2017
- * Time: 7:48 AM
  */
 trait Movable
 {
+    /**
+     * Unix time of the last step made by this target.
+     * @var integer
+     */
     private $timeLastMove;
 
     /**
+     * Returns the map of the actor.
      * @return \Game\World\Map
      */
     abstract function getMap();
